@@ -1,0 +1,565 @@
+@import url("https://fonts.googleapis.com/css?family=Special+Elite");
+@import url("https://fonts.googleapis.com/css?family=Kosugi");
+html, body {
+  height: 100%;
+  width: 100%; }
+
+.navbar {
+  color: #800000;
+  padding: 0 1rem; }
+  .navbar .navbar-nav .nav-link {
+    text-align: center;
+    margin: 0.2rem 0; }
+    .navbar .navbar-nav .nav-link.active {
+      font-weight: 500; }
+    .navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link:focus {
+      color: #8b0000;
+      background-color: #000000;
+      border-radius: 5px; }
+
+#main-content {
+  min-height: calc(100% - 168px); }
+
+/*   scoreboard */
+.scoreboard {
+  width: 18.75rem;
+  height: 28.125rem;
+  background-color: rgb(2, 1, 26);
+  color: rgb(173, 40, 40);
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1;
+  border-radius: 10px;
+  white-space: nowrap;
+  padding: 5px 20px 20px 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 5px double maroon; }
+  .scoreboard h3 {
+    text-decoration: underline;
+    text-align: center; }
+  .scoreboard p {
+    text-align: center;
+    font-size: large; }
+  .scoreboard .score {
+    padding-left: 70px; }
+  .scoreboard .verdict {
+    border-style: double;
+    height: 200px;
+    border-radius: 10px;
+    padding: 8px 8px 20px 8px;
+    text-align: center;
+    width: 250px;
+    white-space: normal;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between; }
+    .scoreboard .verdict p {
+      margin-bottom: 0;
+      font-size: 55px;
+      font-weight: bold; }
+    .scoreboard .verdict .pCounter {
+      font-size: 120px; }
+    .scoreboard .hint{
+      color:#076b93 ;
+      font-size: 20px;
+    }
+/*   house */
+.house {
+  background-image: url(../img/theming/carpet.png);
+  background-repeat: repeat;
+  background-size: cover;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: column;
+  padding: 20px;
+  border-radius: 10px;
+  border: 5px double black;
+  margin-left: 10px;
+  position: relative; }
+  .house .house_banner {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.7); }
+    .house .house_banner p {
+      font-size: 120px;
+      font-weight: 700;
+      color: #ffc107;
+      padding: 0px;
+      margin: 0px; }
+      @media screen and (min-width: 701px) and (max-width: 1055px) {
+        .house .house_banner p {
+          font-size: 70px; } }
+  .house .house_counter {
+    background: black;
+    color: yellow;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 3px solid black;
+    width: 100px;
+    text-align: center; }
+    .house .house_counter p {
+      margin-bottom: 0;
+      font-size: 60px;
+      font-weight: bold;
+      text-auto: center; }
+      .popup {
+        display: none;
+        position: fixed;
+        padding: 10px;
+        width: 280px;
+        left: 50%;
+        margin-left: -150px;
+        height: 180px;
+        top: 50%;
+        margin-top: -100px;
+        background: #FFF;
+        border: 3px solid #F04A49;
+        z-index: 20;
+      }
+      
+      #popup:after {
+        position: fixed;
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: -2;
+      }
+      
+      #popup:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #FFF;
+        z-index: -1;
+      }
+/*   house */
+.player {
+  margin: 10px auto;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-image: url(../img/theming/carpet.png);
+  background-repeat: repeat;
+  background-size: cover;
+  border-radius: 10px;
+  border: 5px black solid; }
+  @media screen and (min-height: 1200px) {
+    .player {
+      height: 470px; } }
+  @media screen and (min-height: 1330px) {
+    .player {
+      height: 530px; } }
+
+.player_banner {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7); }
+  .player_banner p {
+    font-size: 120px;
+    font-weight: 700;
+    color: #ffc107;
+    padding: 0px;
+    margin: 0px; }
+
+.deck_player img {
+  margin: 5px 0px;
+  width: 150px; }
+
+.player_selections {
+  margin: 20px 0; }
+  .player_selections .btn {
+    padding: 0 !important; }
+  .player_selections .console {
+    display: flex; }
+    .player_selections .console .mini_counter {
+      background: black;
+      color: #8b0000;
+      margin: 0 5px;
+      border-radius: 5px;
+      border: 3px solid black;
+      height: 50px;
+      width: 60px;
+      padding: 3px; }
+      .player_selections .console .mini_counter p {
+        margin-bottom: 0;
+        font-size: 33px;
+        font-weight: bold; }
+
+.results {
+  width: 6.25%rem;
+  height: 6.25%rem;
+  background-color: #000000;
+  color: red;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 10px;
+  white-space: nowrap;
+  padding: 5px 20px 20px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
+  border: 5px double red;
+  margin: 0px auto;
+  padding: 20px; }
+  .results .results-right {
+    align-self: center;
+    border: 5px dotted red;
+    border-radius: 10px;
+    padding: 5px;
+    white-space: normal;
+    margin: 20px;
+    width: 100%;
+    height: 100%; }
+    .results .results-right p {
+      font-size: 70px; }
+  .results h3 {
+    text-decoration: underline;
+    text-align: center; }
+  .results p {
+    text-align: center;
+    font-size: medium; }
+  .results table {
+    width: 140px; }
+
+/*   house */
+.console-btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  border: 3px solid #000000;
+  border-radius: 5px;
+  color: #000000;
+  text-decoration: none;
+  -webkit-box-shadow: #000000 0px 0px 18px 0px;
+  -moz-box-shadow: #000000 0px 0px 18px 0px;
+  box-shadow: #000000 0px 0px 18px 0px;
+  text-shadow: #0a0101 0px 0px 1px;
+  font: normal normal bold 22px verdana;
+  background: #fa1d00;
+  background: -webkit-gradient(linear, left top, left bottom, from(#8b0000), to(#740a01));
+  background: -moz-linear-gradient(top, #8b0000, #740a01);
+  background: linear-gradient(to bottom, #8b0000, #740a01);
+  width: 100px; }
+  .console-btn:hover, .console-btn:focus {
+    background: white;
+    color: #000000;
+    text-decoration: none; }
+
+
+    .console-btn-hint {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      border: 3px solid #000000;
+      border-radius: 15px;
+      color: #000000;
+      text-decoration: none;
+      -webkit-box-shadow: #000000 0px 0px 18px 0px;
+      -moz-box-shadow: #000000 0px 0px 18px 0px;
+      box-shadow: #000000 0px 0px 18px 0px;
+      text-shadow: #0a0101 0px 0px 1px;
+      font: normal normal bold 22px verdana;
+      background: #076b93;
+      background: -webkit-gradient(linear, left top, left bottom, from(#8b0000), to(#740a01));
+      background: -moz-linear-gradient(top, #8b0000, #740a01);
+      background: linear-gradient(to bottom, #8b0000, #740a01); }
+      .console-btn-hint:hover, .console-btn-next:focus {
+        background:white;
+        color: #000000;
+        text-decoration: none; }
+      
+      .console-btn-hint:active {
+        background: #076b93;
+      }
+
+.console-btn-next {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  border: 3px solid #000000;
+  border-radius: 5px;
+  color: #000000;
+  text-decoration: none;
+  -webkit-box-shadow: #000000 0px 0px 18px 0px;
+  -moz-box-shadow: #000000 0px 0px 18px 0px;
+  box-shadow: #000000 0px 0px 18px 0px;
+  text-shadow: #0a0101 0px 0px 1px;
+  font: normal normal bold 22px verdana;
+  background: #8b0000;
+  background: -webkit-gradient(linear, left top, left bottom, from(#8b0000), to(#740a01));
+  background: -moz-linear-gradient(top, #8b0000, #740a01);
+  background: linear-gradient(to bottom, #8b0000, #740a01); }
+  .console-btn-next:hover, .console-btn-next:focus {
+    background:white;
+    color: #000000;
+    text-decoration: none; }
+  
+  .console-btn-next:active {
+    background: #076b93;
+  }
+
+form {
+  text-align: center; }
+  form.index {
+    align-self: center;
+    background-color: rgba(128, 0, 0, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    color: #ff2c07;
+    font-weight: 500;
+    width: 420px;
+    -webkit-box-shadow: 2px 6px 42px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 6px 42px 3px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 6px 42px 3px rgba(0, 0, 0, 0.75); }
+    form.index .select-input {
+      width: 50px; }
+    form.index .select-round {
+      width: 55px; }
+    form.index input[type="text"] {
+      width: 90px; }
+    form.index input[type="submit"] {
+      width: 200px;
+      font-weight: bold; }
+    @media screen and (max-width: 500px) {
+      form.index {
+        width: 200px; }
+        form.index label {
+          margin-left: 20px !important; }
+        form.index input[type="submit"] {
+          width: 150px; }
+        form.index #extras {
+          flex-flow: column nowrap;
+          align-items: flex-end; }
+          form.index #extras label {
+            margin-right: 30px; } }
+
+.link-scroll {
+  color: #FF8C42;
+  font-size: 2rem;
+  -webkit-animation-name: scroll;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 3s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: scroll;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes scroll {
+  from {
+    color: red; }
+  to {
+    color: yellow; } }
+/* Standard syntax */
+@keyframes scroll {
+  from {
+    color: red; }
+  to {
+    color: yellow; } }
+@media screen and (max-width: 700px) {
+  .wrapper-game {
+    flex-flow: column-reverse nowrap; }
+
+  /*   welcome message */
+  .welcome {
+    display: none; }
+
+  .upper-half {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    /*   scoreboard*/
+    /*   house */ }
+    .upper-half .scoreboard {
+      width: 100%;
+      height: 100%;
+      margin: 0 5px 5px 5px; }
+      .upper-half .scoreboard .scores-section {
+        padding-top: 5px; }
+      .upper-half .scoreboard .verdict {
+        margin-top: 15px;
+        width: 100%;
+        height: 100%; }
+    .upper-half .house {
+      margin-bottom: 5px;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-evenly; }
+      .upper-half .house .house_counter {
+        width: 100%;
+        margin: 0px;
+        margin-top: 20px; }
+        .upper-half .house .house_counter p {
+          font-size: 30px; }
+      .upper-half .house .deck_house img {
+        width: 100px;
+        margin: 2.5px; }
+      .upper-half .house .deck_house .house_banner p {
+        font-size: 60px; }
+
+  .deck_player {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center; }
+    .deck_player img {
+      margin: 2.5px;
+      width: 100px; }
+
+  .player_banner p {
+    font-size: 60px; }
+
+  .player_selections {
+    flex-flow: column;
+    align-items: center; }
+    .player_selections .console {
+      margin: 10px auto; }
+
+  .results {
+    flex-flow: row wrap; }
+    .results .results-right p {
+      font-size: 40px; }
+    .results .results-left {
+      margin: 10px; }
+
+  #reset,
+  #next {
+    height: 50px; } }
+.wrapper-index {
+  font-family: 'Kosugi', sans-serif;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  background-image: url(../img/theming/bj.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .wrapper-index a {
+    font-size: 30px;
+    align-self: center;
+    color: #ffc107; }
+  @media screen and (max-width: 500px) {
+    .wrapper-index {
+      background-image: url(../img/theming/bj-sm.jpg); } }
+
+.wrapper-game {
+  font-family: 'Special Elite', cursive;
+  padding: 0.625rem 1.25rem;
+  min-height: calc(100vh - 168px);
+  background-color: black;
+  color: white; }
+  .wrapper-game .player_selections {
+    display: flex;
+    justify-content: space-between; }
+
+.wrapper-winner {
+  padding: 1.25rem 6.25rem;
+  min-height: calc(100vh - 168px);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  background-color: #191919;
+  color: #ffffff; }
+  @media screen and (max-width: 700px) {
+    .wrapper-winner {
+      padding: 20px 36px; } }
+
+.upper-half {
+  display: flex;
+  justify-content: space-between; }
+
+.index-div {
+  width: 100%;
+  min-height: 700px;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px 30px; }
+  .index-div h2 {
+    font-size: 60px; }
+  .index-div h3 {
+    text-align: center; }
+  .index-div p {
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 20px; }
+
+.index-2 {
+  background-color: #7e7474;
+  color: white; }
+  .index-2 h2 {
+    margin-bottom: 50px; }
+
+.index-3 {
+  background-image: url(../img/theming/bj2.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px; }
+  @media screen and (max-width: 500px) {
+    .index-3 {
+      background-image: url(../img/theming/bj2-sm.jpg); } }
+
+.index-4 {
+  color: #ffffff;
+  background-color: #70180c; }
+  .index-4 ul {
+    font-size: 20px; }
+  .index-4 h2 {
+    margin-bottom: 50px; }
+  .index-4 h3 {
+    margin-top: 50px; }
+  .index-4 img {
+    display: block;
+    margin: 5px 20px 0 0; }
+  .index-4 .qg-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin: 20px auto;
+    align-items: flex-start; }
+    .index-4 .qg-wrapper p {
+      flex-basis: 80%; }
+  .index-4 .stack {
+    display: flex;
+    flex-flow: column wrap;
+    margin-bottom: 20px; }
+
+#reset,
+#next {
+  width: 200px; }
+
+#reset_winner {
+  width: 240px;
+  height: 60px; }
+  

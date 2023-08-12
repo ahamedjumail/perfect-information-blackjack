@@ -1,0 +1,35 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+// -------------------------------------------------------- Nav
+.navbar {
+    padding: 0 1rem;
+    
+    .navbar-nav {
+
+        .nav-link {
+            text-align: center;
+            margin: 0.2rem 0;
+            
+            &.active {
+                font-weight: 500;
+            }
+            
+            &:hover, &:focus {
+                color: map-get($color, red);
+                background-color: map-get($color, black);
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+
+#main-content {
+    min-height: calc(100% - 168px);
+}
+
+// -------------------------------------------------------- Footer
+

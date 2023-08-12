@@ -1,0 +1,24 @@
+
+.link-scroll {
+    color: #FF8C42;
+    font-size: 2rem;
+    -webkit-animation-name: scroll; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-name: scroll;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes scroll {
+    from {color: red;}
+    to {color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes scroll {
+    from {color: red;}
+    to {color: yellow;}
+}

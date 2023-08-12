@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block title %} Welcome Page {% endblock %} {% block content %}
+<div class="wrapper-index">
+
+    <form method="POST" class="index mx-4">
+        <div class="form-group">
+            <div class="" id="extras">
+                <!--&nbsp-->
+                <label class="">Rounds: &nbsp<input class="form-control-sm select-round" type="number" name="rounds" value="3" min="2"/></label><br>
+            
+                <label class="ml-3">Player: &nbsp<input class="form-control-sm" type="text" name="username" placeholder="Enter name" minlength="2" maxlength="7" required/></label><br>
+            </div>
+            <div class="row extend justify-content-between"></div>
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <p class="small m-0 "><strong> * {{ message }} * </strong> </p>
+            {% endfor %} {% endif %} {% endwith %}
+            <input type="submit" class="btn btn-warning mt-2" value="Start!">
+        </div>
+    </form>
+
+    <a class="mt-3 link-scroll" href="#guide"><i class="fas fa-angle-double-down"></i></a>
+
+</div>
+
+
+<div class="index-div index-3">
+</div>
+
+<div class="index-div index-4" id="guide">
+
+    <h2 class="mx-auto mt-3">QUICK GUIDE</h2>
+    <div class="my-auto">
+        <p>
+            Blackjack may be played with one to eight decks of 52-card decks. The cards 2 through 10 are worth their face value. Kings, queens, and jacks are each worth 10, and aces may be used as either 1 or 11. The object for the player is to draw cards totalling
+            closer to 21, without going over, than the dealer's cards. The best total of all is a two-card 21, or a blackjack.
+        </p>
+
+        <h3> MINI CONSOLE </h3>
+        <div class="qg-wrapper">
+            <div class="stack">
+                <img src="../static/img/guide/hit_stand.png"></img>
+                <img src="../static/img/guide/mini_counter.png"></img>
+            </div>
+            <p>
+                The mini console is located at the button of the game and it continually shows the value of your current hand. If your current hand value reaches 21 exactly, it will turn green indicating that you have "BLACKJACK".<br> Upon finishing
+                your turn by either winning or losing, the HIT and STAND buttons will no longer be active, indicating that you have indeed finished your turn.
+            </p>
+        </div>
+
+        <div class="qg-wrapper">
+            <div class="stack">
+                <img src="../static/img/guide/stand.png"></img>
+                <img src="../static/img/guide/stand_green.png"></img>
+            </div>
+            <p>
+                If you think you have a good chance of beating the house with the cards you hold (value close to 21), you can "STAND". The house will then take its turn and try to beat your current hand.<br> While hitting to get more cards, if your current
+                hand value exceeds 17, the "STAND" button will turn green, letting you know that you are at risk of going "BUST" if you keep hitting.
+            </p>
+        </div>
+
+
+        <div class="qg-wrapper">
+            <div class="stack">
+                <img src="../static/img/guide/reset_game.png"></img>
+            </div>
+            <p>
+                The game can also be reset at any time by the player. Be warned that doing so will erased all the current data held in session.
+            </p>
+        </div>
+
+        <h3> WINNING SCENARIOS </h3>
+        <div class="qg-wrapper">
+
+            <ul>
+                <li>HOUSE WON</li>
+                <ul>
+                    <li>None of the players scored any points.</li>
+                </ul>
+                <li>PLAYER WON</li>
+                <ul>
+                    <li>A player managed to scores the highest point.</li>
+                </ul>
+                
+            </ul>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

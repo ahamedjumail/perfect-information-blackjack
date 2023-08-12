@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block title %} Winner Page {% endblock %} {% block content %}
+<div class="wrapper-winner">
+    {% if winner == "house" %}
+    <h1> {{ winner.title() }} has won</h1>
+    {% elif "and" in winner %}
+    <h1>No winners</h1>
+    {% else %}
+    <h1>{{ winner.title() }} has won</h1>
+    {% endif %}
+    <section class="results mt-4">
+        <div class="results-left">
+            <div>
+                <h3>Scoreboard</h3>
+                <p>Round: &nbsp &nbsp {{ rounds["played"] }}/{{ rounds["total"] }}</p>
+            </div>
+            <table>
+                {% for username in usernames %}
+                <tr>
+                    <td>{{ username.title() }}:</td>
+                    <td class="score">{{ scores[username] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="results-right">
+            {% if winner == "house" %}
+            <p>HOUSE WON</p>
+            {% elif "and" in winner %}
+            <p>NO WINNERS</p>
+            {% else %}
+            <p>{{ winner.title() }} WON</p>
+            {% endif %}
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="">
+            <p>{{ rounds["total"] }} rounds were played in total.</p>
+            <h4>Verdict Summary</h4>
+            {% if winner == "house" %}
+            <p> <strong>HOUSE WINS</strong>.</p>
+            {% elif "and" in winner %}
+            <p><strong>No winners</strong> as house and player have same points.</p>
+            {% else %}
+            <p><strong>{{ winner.title() }}</strong> has won the game with the score of {{ scores[winner] }}.</p>
+            {% endif %}
+        </div>
+       
+    </section>
+    <form method="POST">
+        <input type="submit" class="console-btn" id="reset_winner" name="reset" value="PLAY AGAIN">
+    </form>
+</div>
+{% endblock %}

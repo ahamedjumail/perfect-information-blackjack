@@ -1,0 +1,119 @@
+@include mQ("maxW", 700px) {
+
+    .wrapper-game {
+        flex-flow: column-reverse nowrap
+    }
+
+
+    /*   welcome message */
+    .welcome {
+        display: none;
+    }
+
+
+    .upper-half {
+        display: flex;
+        flex-flow: column-reverse nowrap;
+
+        /*   scoreboard*/
+        .scoreboard {
+            width: 100%;
+            height: 100%;
+            margin: 0 5px 5px 5px;
+
+            .scores-section {
+                padding-top: 5px;
+
+            }
+
+            .verdict {
+                margin-top: 15px;
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+
+        /*   house */
+        .house {
+            margin-bottom: 5px;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .house_counter {
+                width: 100%;
+                margin: 0px;
+                margin-top: 20px;
+                p {
+                    font-size: 30px;
+                }
+            }
+            .deck_house {
+
+                img {
+                    width: 100px;
+                    margin: 2.5px;
+                }
+
+                .house_banner {
+                    p {
+                        font-size: 60px;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
+    .deck_player {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+        img {
+            margin: 2.5px;
+            width: 100px;
+        }
+    }
+
+    .player_banner {
+        p {
+            font-size: 60px;
+        }
+    }
+
+    .player_selections {
+        flex-flow: column;
+        align-items: center;
+
+        .console {
+            margin: 10px auto;
+        }
+    }
+
+
+    .results {
+        flex-flow: row wrap;
+        .results-right {
+
+            p {
+                font-size: 40px;
+            }
+
+        }
+        .results-left {
+            margin: 10px;
+        }
+
+    }
+    
+    #reset,
+    #next {
+    height: 50px;
+}
+
+}
+

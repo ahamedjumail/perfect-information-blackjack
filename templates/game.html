@@ -1,0 +1,123 @@
+{% extends "base.html" %} 
+{% block title %} {{ usernames[seq].title() }} playing ... {% endblock %}
+
+
+{% block content %}
+<div class="wrapper-game">
+
+    <h1 class="text-center mt-3 mb-4 welcome">Welcome to the game, {{ usernames[seq].title() }}!</h1>
+    <div class="upper-half">
+        <section class="scoreboard">
+                <div class=scores-section>
+                    <h3>Scoreboard</h3>
+                    <p>Round: &nbsp &nbsp {{ rounds["played"] }}/{{ rounds["total"] }}</p>
+                    <p>Hints: &nbsp &nbsp {{ hint["used"] }}/{{hint["total"]}}</p>
+                    {% if hint["hit"]== None%}
+                    <p class="hint">Click hint for hint</p>
+                    {% else %}
+                    <p class="hint">{{hint["hit"]}}</p>
+                    {% endif %}
+                    <table>
+                        {% for username in usernames %}
+                        <tr>
+                            {% if username == usernames[seq] %}
+                                <td> &#8680; &nbsp</td>
+                            {% else %}
+                                <td> &nbsp &nbsp</td>
+                            {% endif %}
+                            <td>{{ username.title() }}:</td>
+                            <td class="score">{{ scores[username] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="verdict">
+                    <h4> {{ usernames[seq].title() }} playing</h4>
+                    {% if verdict == "PLAYER" %}
+                        <p>{{ usernames[seq].title()  }} WINS!</p>
+                    {% elif verdict == "HOUSE" %}
+                        <p>{{ verdict  }} WINS!</p>
+                    {% elif verdict == "PUSH" %}
+                        <p>{{ verdict  }}!</p>
+                    {% else %}
+                        <p class="pCounter">{{ player["value"][0] }}</p>
+                    {% endif %}
+                </div>
+
+        </section>
+        
+        
+        <section class="house">
+            <div  class="deck_house">
+                {% if house["value"][1] == "BUST" %}
+                    <div class="house_banner"><p>BUST</p></div>
+                {% elif house["value"][1] == "BLACKJACK" %}
+                    <div class="house_banner"><p>BLACKJACK</p></div>
+                {% endif %}
+                {% for card in house["hand"] %}
+                <img src="../static/img/cards/{{ card }}" width="150" alt="{{ card }}"></img>
+                {% endfor %}
+            </div>
+            <div>
+                {% if house["value"][1] != "empty" %}
+                    <div class="house_counter"><p>{{ house["value"][0] }} </p></div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+    
+    <div class="lower-half">
+        <div>
+            <section class="player">
+                {% if player["value"][1] == "BUST" %}
+                    <div class="player_banner"><p>BUST</p></div>
+                {% elif verdict == "PLAYER" %}
+                    <div class="player_banner"><p>WINNER!</p></div>
+                {% elif verdict == "HOUSE" %}
+                    <div class="player_banner"><p>LOST!</p></div>
+                {% elif verdict == "PUSH" %}
+                    <div class="player_banner"><p>PUSH!</p></div>
+
+                
+                {% endif %}
+                <div class="deck_player">
+                    {% for card in player["hand"] %}
+                    <img src="../static/img/cards/{{ card }}" alt="{{ card }}"></img>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+        
+        <form method="POST" class="player_selections">
+            <input type="submit" class="console-btn" id="reset" name="reset" value="RESET GAME">
+            <div class="console">
+                <input type="submit" class="console-btn btn" id="stand" name="stand" value="STAND">
+                <div class="mini_counter">
+                    <p>{{ player["value"][0] }}</p>
+                </div> 
+                <input type="submit" class="console-btn btn" id="hit" name="hit" value="HIT">
+                <input type="submit" class="console-btn-hint" id ="hint" name="hint" value="HINT">
+            </div>
+            <input type="submit" class="console-btn-next" id="next" name="next" value="NEXT">
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
+<script>
+    
+    // converting template variables to javascript variables
+    var game_verdict = {{ verdict|tojson }};
+    var player_verdict = {{ player["value"][1]|tojson }};
+    var player_count = {{ player["value"][0]|tojson }};
+
+    console_guidance(game_verdict) // disbale "HIT" and "STAND" if a verdict was passed 
+    miniCounterGuidance(player_verdict) // Guidance (change mini counter colour to green) - user has blackjack, no need to hit!
+    standGuidance(player_count)     // Guidance (change "STAND" colour to green) - hand is good enough to "STAND"
+    
+</script>
+
+
+{% endblock %}

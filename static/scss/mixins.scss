@@ -1,0 +1,113 @@
+// template for the display
+@mixin scoreDisplay($width, $height, $bgColor, $fontColor, $fontWeight, $fontSize, $borderRadius) {
+    width: pix2Rem($width);
+    height: pix2Rem($height);
+    background-color: map-get($color, $bgColor);
+    color: map-get($color, $fontColor);
+    font-weight: $fontWeight;
+    font-size: pix2Rem($fontSize);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle; // border: ;
+    border-radius: $borderRadius;
+    @content
+}
+
+
+
+@mixin scoreBoard($width, $height, $bgclr, $clr,$fontW,$fontS, $lineH, $borderR) {
+    width: pix2Rem($width);
+    height: pix2Rem($height);
+    background-color: map-get($color, $bgclr);
+    color: map-get($color, $clr);
+    font-weight: $fontW;
+    font-size: pix2Rem($fontS);
+    line-height: $lineH;
+    border-radius: $borderR;
+    white-space: nowrap;
+    @content
+}
+
+
+
+// convert rem input to pixel
+@function rem2Pix($args...) {
+    @if length(args)==1 {
+        @return ( nth($args, 1) * $rembase)+px;
+    }
+    @else {
+        @return ( nth($args, 1) * nth($args, 2))+px;
+    }
+};
+
+
+// convert pixel input to rem
+@function pix2Rem($args...) {
+    @if length(args)==1 {
+        @return ( nth($args, 1)/$rembase)+rem;
+    }
+    @else {
+        @return ( nth($args, 1)/nth($args, 2))+rem;
+    }
+};
+
+
+
+// media query min-max width-height
+@mixin mQ($arg...) {
+    @if length($arg)==2 {
+
+        @if nth($arg, 1)=="minW" {
+            @media screen and (min-width: nth($arg, 2)) {
+                @content
+            }
+        }
+        @else if nth($arg, 1)=="maxW" {
+            @media screen and (max-width: nth($arg, 2)) {
+                @content
+            }
+        }
+        @else if nth($arg, 1)=="minH" {
+            @media screen and (min-height: nth($arg, 2)) {
+                @content
+            }
+        }
+        @else if nth($arg, 1)=="maxH" {
+            @media screen and (max-height: nth($arg, 2)) {
+                @content
+            }
+        }
+    }
+    @else {
+        // min and max width 
+        @if nth($arg, 1)=="w" {
+            @media screen and (min-width: nth($arg, 2)) and (max-width: nth($arg, 3)) {
+                @content;
+            }
+        }
+        @else {
+            @media screen and (min-height: nth($arg, 2)) and (max-height: nth($arg, 3)) {
+                @content;
+            }
+        }
+    }
+}
+
+;
+
+
+@mixin consoleBtn() {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    border: 3px solid #000000;
+    border-radius: 5px;
+    color: #000000;
+    text-decoration: none;
+    -webkit-box-shadow: #000000 0px 0px 18px 0px;
+    -moz-box-shadow: #000000 0px 0px 18px 0px;
+    box-shadow: #000000 0px 0px 18px 0px;
+    text-shadow: #0a0101 0px 0px 1px;
+    font: normal normal bold 22px verdana;
+    @content;
+}
